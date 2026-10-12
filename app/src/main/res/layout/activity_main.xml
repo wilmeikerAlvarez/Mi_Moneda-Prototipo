@@ -1,19 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 	android:id="@+id/main"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	tools:context=".MainActivity">
-
-	<TextView
-		android:layout_width="wrap_content"
+	android:background="#F5F9FB"
+	android:fillViewport="true">
+	
+	<LinearLayout
+		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:text="Hello World!"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+		android:gravity="center_horizontal"
+		android:orientation="vertical"
+		android:paddingStart="40dp"
+		android:paddingTop="90dp"
+		android:paddingEnd="40dp"
+		android:paddingBottom="36dp">
+		
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="MiMoneda"
+			android:textColor="#263D50"
+			android:textSize="32sp"
+			android:textStyle="bold" />
+		
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="38dp"
+			android:gravity="center"
+			android:text="“Controla tu dinero, consigue tus metas”"
+			android:textColor="#344B5A"
+			android:textSize="14sp"
+			android:textStyle="bold" />
+		
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="48dp"
+			android:layout_marginBottom="32dp"
+			android:text="INICIO DE SESIÓN"
+			android:textColor="#263D50"
+			android:textSize="22sp"
+			android:textStyle="bold" />
+		
+		<EditText
+			android:id="@+id/editTextCorreo"
+			android:layout_width="match_parent"
+			android:layout_height="60dp"
+			android:background="@drawable/bg_input"
+			android:drawableStart="@android:drawable/ic_dialog_email"
+			android:drawablePadding="14dp"
+			android:drawableTint="#344B5A"
+			android:hint="Correo electrónico"
+			android:inputType="textEmailAddress"
+			android:paddingStart="16dp"
+			android:paddingEnd="16dp"
+			android:textColor="#263D50"
+			android:textColorHint="#71818D"
+			android:textSize="15sp" />
+		
+		<EditText
+			android:id="@+id/editTextContrasena"
+			android:layout_width="match_parent"
+			android:layout_height="60dp"
+			android:layout_marginTop="34dp"
+			android:background="@drawable/bg_input"
+			android:drawableStart="@android:drawable/ic_lock_idle_lock"
+			android:drawablePadding="14dp"
+			android:drawableTint="#344B5A"
+			android:hint="Contraseña"
+			android:inputType="textPassword"
+			android:paddingStart="16dp"
+			android:paddingEnd="16dp"
+			android:textColor="#263D50"
+			android:textColorHint="#71818D"
+			android:textSize="15sp" />
+		
+		<Button
+			android:id="@+id/buttonIniciarSesion"
+			android:layout_width="match_parent"
+			android:layout_height="60dp"
+			android:layout_marginTop="48dp"
+			android:background="@drawable/bg_button"
+			android:backgroundTint="#267F82"
+			android:text="INICIAR SESIÓN"
+			android:textAllCaps="false"
+			android:textColor="#FFFFFF"
+			android:textSize="19sp"
+			android:textStyle="bold" />
+		
+		<TextView
+			android:id="@+id/textViewRegistrarse"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="24dp"
+			android:text="¿No tienes cuenta? Regístrate"
+			android:textColor="#526C70"
+			android:textSize="14sp" />
+	
+	</LinearLayout>
+</ScrollView>
