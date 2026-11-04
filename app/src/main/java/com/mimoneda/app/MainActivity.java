@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         );
 
         EditText editTextCorreo = findViewById(R.id.editTextCorreo);
-        Button buttonIniciarSesion = findViewById(R.id.buttonIniciarSesion);
+        Button buttonIniciarSesion = findViewById(R.id.botonCrearCuenta);
 
         buttonIniciarSesion.setOnClickListener(vista -> {
             String correo = editTextCorreo.getText().toString().trim();
