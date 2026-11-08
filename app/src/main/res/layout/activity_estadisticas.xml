@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F7F9F8"
+    android:padding="12dp">
+
+    <!-- TÍTULO -->
+    <TextView
+        android:id="@+id/txtTituloEstadisticas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Estadísticas"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="14dp" />
+
+    <!-- BOTONES DE FILTRO -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="12dp">
+
+        <TextView
+            android:id="@+id/btnSemana"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="SEMANA"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/btn_pulsado"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <TextView
+            android:id="@+id/btnMes"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_marginStart="7dp"
+            android:gravity="center"
+            android:text="MES"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:background="@drawable/btn_noPulsado"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <TextView
+            android:id="@+id/btnAnio"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_marginStart="7dp"
+            android:gravity="center"
+            android:text="AÑO"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:background="@drawable/btn_noPulsado"
+            android:clickable="true"
+            android:focusable="true" />
+
+    </LinearLayout>
+
+    <!-- ZONA DEL GRÁFICO CIRCULAR -->
+    <FrameLayout
+        android:id="@+id/contenedorGrafico"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="14dp">
+
+        <!-- Aquí añadiremos el gráfico desde Java -->
+
+    </FrameLayout>
+
+    <!-- TABLA INFERIOR -->
+    <LinearLayout
+        android:id="@+id/contenedorResumen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/tabla_estadisticas"
+        android:padding="8dp"
+        android:layout_marginBottom="10dp">
+
+        <!-- FILA 1 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <!-- VIVIENDA -->
+            <TextView
+                android:id="@+id/txtVivienda"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="⌂ 106.25€    25%"
+                android:textSize="11sp"
+                android:textColor="#000000" />
+
+            <!-- COCHE -->
+            <TextView
+                android:id="@+id/txtCoche"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="20dp"
+                android:text="🚗 63.75€    15%"
+                android:textSize="11sp"
+                android:textColor="#000000" />
+
+        </LinearLayout>
+
+        <!-- FILA 2 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <!-- SUPERMERCADO -->
+            <TextView
+                android:id="@+id/txtSupermercado"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="▣ 170.00€    40%"
+                android:textSize="11sp"
+                android:textColor="#000000" />
+
+            <!-- COMPRAS -->
+            <TextView
+                android:id="@+id/txtCompras"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+               android:layout_marginStart="20dp"
+                android:text="🛍 21.25€    5%"
+                android:textSize="11sp"
+                android:textColor="#000000" />
+
+        </LinearLayout>
+
+        <!-- FILA 3 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <!-- REGALOS -->
+            <TextView
+                android:id="@+id/txtRegalos"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="♙ 42.50€    10%"
+                android:textSize="11sp"
+                android:textColor="#000000" />
+
+            <!-- RESTAURANTES -->
+            <TextView
+                android:id="@+id/txtRestaurantes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="20dp"
+                android:text="♨ 21.25€    5%"
+                android:textSize="11sp"
+                android:textColor="#000000" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

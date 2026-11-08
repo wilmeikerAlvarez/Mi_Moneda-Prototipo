@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#F7F9F8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingBottom="35dp">
+
+        <!-- CÍRCULO VERDE -->
+        <FrameLayout
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="130dp">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/circulo_verde" />
+
+            <!-- ICONO DE CONFIRMACIÓN -->
+            <ImageView
+                android:id="@+id/imgConfirmacion"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_confirmado"
+                android:contentDescription="Movimiento guardado" />
+
+        </FrameLayout>
+
+        <!-- TÍTULO -->
+        <TextView
+            android:id="@+id/txtMovimientoGuardado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:text="¡Movimiento\nguardado!"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="#111111"
+            android:gravity="center"
+            android:lineSpacingExtra="3dp" />
+
+        <!-- MENSAJE DE CONFIRMACIÓN -->
+        <TextView
+            android:id="@+id/txtDescripcionConfirmacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:text="«Tu movimiento se ha registrado correctamente»"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#222222"
+            android:gravity="center"
+            android:lineSpacingExtra="3dp" />
+
+        <!-- BOTÓN VOLVER AL INICIO -->
+        <TextView
+            android:id="@+id/btnVolverInicio"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="85dp"
+            android:gravity="center"
+            android:text="VOLVER AL INICIO"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/btn_pulsado"
+            android:clickable="true"
+            android:focusable="true" />
+
+    </LinearLayout>
+
+</ScrollView>
