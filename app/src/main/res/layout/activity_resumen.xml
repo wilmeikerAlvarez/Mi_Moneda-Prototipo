@@ -1,10 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ResumenActivity">
+    android:background="#F2F2F2">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Título -->
+        <TextView
+            android:id="@+id/txtTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Resumen de tus finanzas"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Tarjeta saldo -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:orientation="vertical"
+            android:background="#1E8C5A"
+            android:padding="20dp"
+            android:gravity="center"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:id="@+id/txtSaldoLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Saldo disponible"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/txtSaldo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2.450,00 €"
+                android:textColor="#FFFFFF"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                android:layout_marginTop="12dp"/>
+        </LinearLayout>
+
+        <!-- Acciones rápidas -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Acciones rápidas"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginBottom="12dp"/>
+
+        <Button
+            android:id="@+id/btnIngreso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="➕ Añadir ingreso"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/btnGasto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="➖ Añadir gasto"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Movimientos -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Últimos movimientos"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginBottom="12dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#FFFFFF"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/txtMov1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🔴 Supermercado -45 €"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/txtMov2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🟢 Nómina +1500 €"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/txtMov3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🟢 Bizum +400 €"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/txtMov4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🔴 Starbucks -20 €"
+                android:textSize="16sp"/>
+        </LinearLayout>
+
+        <!-- Botones inferiores -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp">
+
+            <Button
+                android:id="@+id/btnMas"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_margin="8dp"
+                android:drawableBottom="@android:drawable/ic_input_add"
+                android:text="+"
+                android:textSize="22sp" />
+
+            <Button
+                android:id="@+id/btnMenos"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_margin="8dp"
+                android:text="-"
+                android:textSize="22sp" />
+
+            <Button
+                android:id="@+id/btnMovimientos"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:text="↻"
+                android:textSize="22sp"
+                android:layout_margin="8dp"/>
+
+            <Button
+                android:id="@+id/btnConfig"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:text="⚙"
+                android:textSize="18sp"
+                android:layout_margin="8dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

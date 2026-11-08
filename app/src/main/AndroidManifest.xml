@@ -12,6 +12,42 @@
 		android:supportsRtl="true"
 		android:theme="@style/Theme.MiMonedaPrototipo">
 		<activity
+			android:name=".AniadirGasto1"
+			android:exported="false" />
+		<activity
+			android:name=".AniadirGasto2"
+			android:exported="false" />
+		<activity
+			android:name=".AniadirGasto3"
+			android:exported="false" />
+		<activity
+			android:name=".AniadirGasto4"
+			android:exported="false" />
+		<activity
+			android:name=".AniadirGasto5"
+			android:exported="false" />
+		<activity
+			android:name=".AniadirGasto6"
+			android:exported="false" />
+		<activity
+			android:name=".AniadirIngreso"
+			android:exported="false" />
+		<activity
+			android:name=".CrearCuentaActivity"
+			android:exported="false" />
+		<activity
+			android:name=".errorActivity"
+			android:exported="false" />
+		<activity
+			android:name=".EstadisticasActivity"
+			android:exported="false" />
+		<activity
+			android:name=".movimientoConfirmadoActivity"
+			android:exported="false" />
+		<activity
+			android:name=".ResumenActivity"
+			android:exported="false" />
+		<activity
 			android:name=".MainActivity"
 			android:exported="true">
 			<intent-filter>
