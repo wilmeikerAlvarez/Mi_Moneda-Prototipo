@@ -1,6 +1,7 @@
 package com.mimoneda.app;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,103 +10,104 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.mimoneda.app.data.MiMonedaDbHelper;
+import com.mimoneda.app.util.ImporteUtils;
+import com.mimoneda.app.util.SesionManager;
+
 import java.util.Calendar;
+import java.util.Locale;
 
 public class AniadirIngreso extends AppCompatActivity {
 
     private EditText etImporte;
     private EditText etConcepto;
     private EditText etFecha;
-
-    private Button btnGuardar;
-    private Button btnCancelar;
-
-    private ImageButton btnVolver;
+    private String fechaIso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aniadir_ingreso);
 
-        // Referencias XML
         etImporte = findViewById(R.id.etImporte);
         etConcepto = findViewById(R.id.etConcepto);
         etFecha = findViewById(R.id.etFecha);
+        Button btnGuardar = findViewById(R.id.btnGuardar);
+        Button btnCancelar = findViewById(R.id.btnCancelar);
+        ImageButton btnVolver = findViewById(R.id.btnVolver);
 
-        btnGuardar = findViewById(R.id.btnGuardar);
-        btnCancelar = findViewById(R.id.btnCancelar);
-
-        btnVolver = findViewById(R.id.btnVolver);
-
-        // Selector de fecha
-        etFecha.setOnClickListener(v -> mostrarCalendario());
-
-        // Botón volver
-        btnVolver.setOnClickListener(v -> finish());
-
-        // Botón cancelar
-        btnCancelar.setOnClickListener(v -> finish());
-
-        // Botón guardar
-        btnGuardar.setOnClickListener(v -> guardarIngreso());
+        establecerFecha(Calendar.getInstance());
+        etFecha.setOnClickListener(vista -> mostrarCalendario());
+        btnVolver.setOnClickListener(vista -> finish());
+        btnCancelar.setOnClickListener(vista -> finish());
+        btnGuardar.setOnClickListener(vista -> guardarIngreso());
     }
 
     private void mostrarCalendario() {
-
         Calendar calendario = Calendar.getInstance();
+        new DatePickerDialog(
+                this,
+                (vista, anio, mes, dia) -> {
+                    Calendar seleccion = Calendar.getInstance();
+                    seleccion.set(anio, mes, dia);
+                    establecerFecha(seleccion);
+                },
+                calendario.get(Calendar.YEAR),
+                calendario.get(Calendar.MONTH),
+                calendario.get(Calendar.DAY_OF_MONTH)
+        ).show();
+    }
 
+    private void establecerFecha(Calendar calendario) {
         int anio = calendario.get(Calendar.YEAR);
-        int mes = calendario.get(Calendar.MONTH);
+        int mes = calendario.get(Calendar.MONTH) + 1;
         int dia = calendario.get(Calendar.DAY_OF_MONTH);
 
-        DatePickerDialog datePicker = new DatePickerDialog(
-                this,
-                (view, year, month, dayOfMonth) -> {
-
-                    String fecha =
-                            dayOfMonth + "/" +
-                                    (month + 1) + "/" +
-                                    year;
-
-                    etFecha.setText(fecha);
-                },
-                anio,
-                mes,
-                dia
-        );
-
-        datePicker.show();
+        fechaIso = String.format(Locale.ROOT, "%04d-%02d-%02d", anio, mes, dia);
+        etFecha.setText(String.format(Locale.ROOT, "%d/%d/%d", dia, mes, anio));
     }
 
     private void guardarIngreso() {
-
-        String importe = etImporte.getText().toString().trim();
         String concepto = etConcepto.getText().toString().trim();
-        String fecha = etFecha.getText().toString().trim();
+        long importeCentimos;
 
-        if (importe.isEmpty()) {
-            etImporte.setError("Introduce un importe");
+        try {
+            importeCentimos = ImporteUtils.eurosACentimos(
+                    etImporte.getText().toString()
+            );
+        } catch (IllegalArgumentException excepcion) {
+            etImporte.setError(excepcion.getMessage());
+            etImporte.requestFocus();
             return;
         }
 
         if (concepto.isEmpty()) {
             etConcepto.setError("Introduce un concepto");
+            etConcepto.requestFocus();
             return;
         }
 
-        if (fecha.isEmpty()) {
-            etFecha.setError("Selecciona una fecha");
+        SesionManager sesion = new SesionManager(this);
+        if (!sesion.haySesion()) {
+            Toast.makeText(this, "Debes iniciar sesión", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, MainActivity.class));
+            finish();
             return;
         }
 
-        Toast.makeText(
-                this,
-                "Ingreso guardado correctamente",
-                Toast.LENGTH_SHORT
-        ).show();
+        long idMovimiento = MiMonedaDbHelper.obtenerInstancia(this).insertarMovimiento(
+                sesion.obtenerIdCuenta(),
+                MiMonedaDbHelper.TIPO_INGRESO,
+                importeCentimos,
+                concepto,
+                fechaIso,
+                "Ingresos"
+        );
 
-        // Aquí podrás guardar en SQLite más adelante
-
+        Class<?> destino = idMovimiento == -1L
+                ? errorActivity.class
+                : movimientoConfirmadoActivity.class;
+        startActivity(new Intent(this, destino));
         finish();
     }
 }
