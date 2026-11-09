@@ -1,24 +1,14 @@
 package com.mimoneda.app;
 
-import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-public class AniadirGasto5 extends AppCompatActivity {
+public class AniadirGasto5 extends BaseGastoActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_resumen);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+    protected int obtenerLayout() {
+        return R.layout.activity_aniadir_gasto5;
+    }
+
+    @Override
+    protected String obtenerCategoriaInicial() {
+        return "Ocio";
     }
 }
