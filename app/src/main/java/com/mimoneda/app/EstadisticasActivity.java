@@ -101,7 +101,7 @@ public class EstadisticasActivity extends AppCompatActivity {
             } else {
 
                 botones[i].setBackgroundResource(
-                        R.drawable.btn_noPulsado
+                        R.drawable.btn_nopulsado
                 );
 
                 botones[i].setTextColor(Color.BLACK);
